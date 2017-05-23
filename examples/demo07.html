@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="KeyWords" content="黑松告白大使,黑松,告白,告白大使"/>
+<title>《黑松告白大使》－ 告白你的夢想吧！</title>
+<link rel="shortcut icon" href="./image/logo-small.png" type="image/png"/>
+<style type='text/css'>
+  ul { list-style: none; }
+  body {
+  background: url(./image/background.png) no-repeat center top;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  }
+  #recordingslist audio { display: block; margin-bottom: 10px; }
+  .upload_button {
+    width:25%;
+    margin-left: 20%;
+    margin-top: 40%;
+  }
+  .submit_button {
+    width:33%;
+    margin-top: -13%;
+  }
+</style>
+<script type="text/JavaScript" src="../js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+  function chk(){
+    if(document.form1.inputFile.value==''){
+      alert('請先上傳影片');
+      document.form1.inputFile.focus();
+      return false;
+    }
+    else return true;
+  }
+</script>
+</head>
+<body>
+  <div id="show_video_div" style="display:none">
+    <div id="add_video" align="center" style="margin:5%; background:#000">
+    </div>
+    <image src="./image/slogn.png" style="width:100%"/>
+    <div style="margin-top: 0%;">
+      <input style="width:45%;margin-left:3%" type="image" onclick="window.location='https://www.youtube.com/watch?v=1B0-tE_0NzU'" src="./image/screenshot-1.png"/>
+      <input style="width:45%;margin-left:3%" type="image" onclick="window.location='https://www.youtube.com/watch?v=dM2Q_zz2IZk'" src="./image/screenshot-2.png"/>
+    </div>
+    <div style="width:100%;margin-top:2.5%" align="center">
+      <image style="width:80%" src="./image/dream.png"/>
+    </div>
+    <div style="margin-top: 2.5%;">
+      <input style="width:45%;margin-left:3%" type="image" onclick="window.location='https://www.youtube.com/watch?v=nEjuFi3Q3nc'" src="./image/screenshot-3.png"/>
+      <input style="width:45%;margin-left:3%" type="image" onclick="window.location='https://www.youtube.com/watch?v=1B0-tE_0NzU'" src="./image/screenshot-4.png"/>
+    </div>
+    <div style="width:100%;margin-top:2.5%" align="center">
+      <image style="width:30%" src="./image/logo.png"/>
+    </div>
+  </div>
+  <script type="text/javascript">
+    var filename = location.pathname.split("/")[3].split("\.")[0];
+    $.get("./video/" + filename + ".tmp")
+        .done(function(data) { 
+            // exists code 
+            $("#upload_file_div").hide();
+            var content = '<video controls="" style="height:50%">'
+            content += '<source src="video/' + filename + '.' + data + '"/>';
+            content += '</video>'
+            $("#add_video").append(content);
+            $('#show_video_div').show();
+            document.body.style.background="#ffcccc"
+        }).fail(function() { 
+            // not exists code
+            $("#upload_file_div").show();
+        })
+  </script>
+  <script LANGUAGE="JavaScript">  
+    function fake_input(){  
+      form1.inputFile.click();
+    }
+  </script> 
+  <div id="upload_file_div">
+    <form name="form1" action="upload.php" method="post" enctype="multipart/form-data" onsubmit="return chk()">
+      <input name="inputFile" type="file" name="file" id="file" accept="video/*" capture="microphone" style="display:none">
+      <input class="upload_button" type="image" src="./image/upload_button.png" onclick="fake_input();return false;"/>
+      <br/>
+      <input class="submit_button" type="image" src="./image/submit_button.png" name="submit" onClick="return chk();"/>
+    </form>
+  <div style="margin-top: 15%;">
+  <input style="width:45%;margin-left:3%" type="image" onclick="window.location='https://www.youtube.com/watch?v=1B0-tE_0NzU'" src="./image/screenshot-1.png"/>
+  <input style="width:45%;margin-left:3%" type="image" onclick="window.location='https://www.youtube.com/watch?v=dM2Q_zz2IZk'" src="./image/screenshot-2.png"/>
+  </div>
+  <div style="width:100%;margin-top:2.5%" align="center">
+    <image style="width:80%" src="./image/dream.png"/>
+  </div>
+  <div style="margin-top: 2.5%;">
+  <input style="width:45%;margin-left:3%" type="image" onclick="window.location='https://www.youtube.com/watch?v=nEjuFi3Q3nc'" src="./image/screenshot-3.png"/>
+  <input style="width:45%;margin-left:3%" type="image" onclick="window.location='https://www.youtube.com/watch?v=i7KN6HarX_Q&feature=youtu.be'" src="./image/screenshot-4.png"/>
+  </div>
+  <div style="width:100%;margin-top:2.5%" align="center">
+    <input style="width:30%" type="image" onclick="window.location='https://www.facebook.com/confessurdream/?ref=aymt_homepage_panel'" src="./image/logo.png"/>
+  </div>
+  </div>
+</body>
+</html>
